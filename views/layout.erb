@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Basic HTML Page</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+
+  <body background-image:"/Main.JPG">
+    <div class = "header">
+      <h1><a href = "http://localhost:4567">Movies DB</a></h1>
+    </div>
+    <div class = "main_body">
+      <form class = "search_bar" action="/movies" method="get">
+        <label for="query">Search: </label>
+        <input type="text" name="query" id="query" />
+        <input type="submit" value="Search" />
+      </form>
+      <%= yield %>
+  </div>
+  </body>
+</html>

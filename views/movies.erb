@@ -1,0 +1,21 @@
+<%= "Search Results for: <b>#{@query}</b>" if @query != nil %>
+
+<ul>
+  <% @movie_list.each do |movie, id| %>
+    <li><a href = "http://localhost:4567/movies/<%=id%>"><%="#{movie}"%></a></li>
+  <% end %>
+</ul>
+
+<p>
+<p class="nav_arrows">
+<a href= "http://localhost:4567/movies?<%= "query=#{@query}&" if @query != nil %>page=<%= @page !=1 ? @page-1 : @page %>"><b> Back </b></a>
+<a class = "nav_arrow" href= "http://localhost:4567/movies?<%= "query=#{@query}&" if @query != nil %>page=<%= @page != @total_pages ? @page+1 : @page %>"><b> Next </b></a>
+
+<form class = "gotopage" method="get" action="/movies" >
+  <label for="go_to_page">Go To Page: </label>
+  <%= "<input type = \"hidden\" name = \"query\" value = #{@query} />" if @query != nil %>
+  <input type = "number" name = "page" id = "go_to_page" min = "1" max = <%= "#{@total_pages}" %> />
+  <%= "[#{@page}/#{@total_pages}]"%>
+</form>
+
+
